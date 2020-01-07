@@ -16,7 +16,7 @@
     <td>{{todo.id}}</td>
     <td>{{todo.title}}</td>
     <td>
-      <input type="checkbox" value="{{todo.completed}}" [checked]="todo.completed">
+      <input type="checkbox" value="{{todo.completed}}" [checked]="todo.completed" (click)="updateSelected(todo)">
 
     </td>
   </tr>

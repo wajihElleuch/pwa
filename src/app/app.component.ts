@@ -24,4 +24,12 @@ export class AppComponent implements OnInit {
       console.log(value);
     });
   }
+
+  updateSelected(todo: any) {
+    if (todo.selected) {
+      this.todoService.updateTodo(todo.id, false);
+    } else {
+      this.todoService.updateTodo(todo.id, true);
+    }
+  }
 }

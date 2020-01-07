@@ -12,4 +12,8 @@ export class TodoService {
   public getTodo() {
     return this.httpClient.get('https://jsonplaceholder.typicode.com/todos');
   }
+
+  public updateTodo(id, selectedChange) {
+    return this.httpClient.patch(`https://jsonplaceholder.typicode.com/todos/${id}`, {selected: selectedChange});
+  }
 }
