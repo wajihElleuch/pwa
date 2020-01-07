@@ -15,7 +15,10 @@
   <tr *ngFor="let todo of todos">
     <td>{{todo.id}}</td>
     <td>{{todo.title}}</td>
-    <td>{{todo.completed}}</td>
+    <td>
+      <input type="checkbox" value="{{todo.completed}}" [checked]="todo.completed">
+
+    </td>
   </tr>
 </table>
 <router-outlet></router-outlet>
