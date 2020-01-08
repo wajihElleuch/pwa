@@ -1,6 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {SwUpdate} from '@angular/service-worker';
-import {TodoService} from './services/todo.service';
+import {UserService} from './services/user.service';
+
+export interface User {
+  firstName: string;
+  lastName: string;
+  selected: boolean;
+}
 
 @Component({
   selector: 'app-root',
@@ -10,26 +16,28 @@ import {TodoService} from './services/todo.service';
 export class AppComponent implements OnInit {
   title = 'paw';
   update = false;
-  todos: any;
+  users: any;
 
-  constructor(private updates: SwUpdate, private todoService: TodoService) {
+  constructor(private updates: SwUpdate, private todoService: UserService) {
     this.updates.available.subscribe(value => {
       updates.activateUpdate().then(() => document.location.reload());
     });
   }
 
   ngOnInit(): void {
-    this.todoService.getTodo().subscribe(value => {
-      this.todos = value;
+    this.todoService.getUsers().subscribe((value: User[]) => {
+      this.users = value;
       console.log(value);
     });
   }
 
-  updateSelected(todo: any) {
-    if (todo.selected) {
-      this.todoService.updateTodo(todo.id, false);
+  updateSelected(user: any) {
+    if (user.selected) {
+      user.selected = false;
+      this.todoService.updateUser(user).subscribe(value => console.log(value));
     } else {
-      this.todoService.updateTodo(todo.id, true);
+      user.selected = true;
+      this.todoService.updateUser(user).subscribe(value => console.log(value));
     }
   }
 }

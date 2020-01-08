@@ -12,11 +12,11 @@
     <th>title</th>
     <th>state</th>
   </tr>
-  <tr *ngFor="let todo of todos">
-    <td>{{todo.id}}</td>
-    <td>{{todo.title}}</td>
+  <tr *ngFor="let user of users">
+    <td>{{user.firstName}}</td>
+    <td>{{user.lastName}}</td>
     <td>
-      <input type="checkbox" value="{{todo.completed}}" [checked]="todo.completed" (click)="updateSelected(todo)">
+      <input type="checkbox" value="{{user.selected}}" [checked]="user.selected" (click)="updateSelected(user)">
 
     </td>
   </tr>
