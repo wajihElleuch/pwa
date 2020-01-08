@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {OnlineOfflineService} from './online-offline.service';
 import Dexie from 'dexie';
 import {User} from '../app.component';
+import {delay, retryWhen, take} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -64,7 +65,9 @@ export class UserService {
       id: 2,
       lastName: 'jallouli',
       selected: false
-    }).subscribe(value => console.log(value));
+    }).pipe(
+      retryWhen(errors => errors.pipe(delay(1000), take(10)))
+    ).subscribe(value => console.log(value));
     //
     // allItems.forEach((item: User) => {
     //   console.log(item);
