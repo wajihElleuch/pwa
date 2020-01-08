@@ -59,7 +59,12 @@ export class UserService {
 
   private async sendItemsFromIndexedDb() {
     const allItems: User[] = await this.db.users.toArray();
-    this.httpClient.put(`https://app-paw.herokuapp.com/users/edit`, allItems[0]).subscribe(value => console.log(value));
+    this.httpClient.put(`https://app-paw.herokuapp.com/users/edit`, {
+      firstName: 'dalidali',
+      id: 2,
+      lastName: 'jallouli',
+      selected: false
+    }).subscribe(value => console.log(value));
     //
     // allItems.forEach((item: User) => {
     //   console.log(item);
