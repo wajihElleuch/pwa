@@ -19,5 +19,4 @@ export class OnlineOfflineService {
   private updateOnlineStatus() {
     this.internalConnectionChanged.next(window.navigator.onLine);
   }
-
 }

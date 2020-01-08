@@ -59,14 +59,15 @@ export class UserService {
 
   private async sendItemsFromIndexedDb() {
     const allItems: User[] = await this.db.users.toArray();
-
-    allItems.forEach((item: User) => {
-      console.log(item);
-      this.httpClient.put(`https://app-paw.herokuapp.com/users/edit`, item).subscribe(value => console.log(value));
-      // this.db.users.delete(item).then(() => {
-      //   console.log(`item ${item} sent and deleted locally`);
-      // });
-    });
+    this.httpClient.put(`https://app-paw.herokuapp.com/users/edit`, allItems[0]).subscribe(value => console.log(value));
+    //
+    // allItems.forEach((item: User) => {
+    //   console.log(item);
+    //   this.httpClient.put(`https://app-paw.herokuapp.com/users/edit`, item).subscribe(value => console.log(value));
+    //   // this.db.users.delete(item).then(() => {
+    //   //   console.log(`item ${item} sent and deleted locally`);
+    //   // });
+    // });
   }
 
 }
