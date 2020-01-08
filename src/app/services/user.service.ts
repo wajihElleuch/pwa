@@ -63,9 +63,9 @@ export class UserService {
     allItems.forEach((item: User) => {
       console.log(item);
       this.httpClient.put(`https://app-paw.herokuapp.com/users/edit`, item).subscribe(value => console.log(value));
-      this.db.users.delete(item).then(() => {
-        console.log(`item ${item} sent and deleted locally`);
-      });
+      // this.db.users.delete(item).then(() => {
+      //   console.log(`item ${item} sent and deleted locally`);
+      // });
     });
   }
 
