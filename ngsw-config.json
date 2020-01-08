@@ -40,17 +40,5 @@
         "strategy": "freshness"
       }
     }
-//    {
-//      "name": "updateUser",
-//      "urls": [
-//        "https://app-paw.herokuapp.com/users/edit"
-//      ],
-//      "cacheConfig": {
-//        "maxSize": 5,
-//        "maxAge": "6h",
-//        "timeout": "5s",
-//        "strategy": "freshness"
-//      }
-//    }
   ]
 }
