@@ -47,7 +47,7 @@ export class UserService {
 
   private addToIndexedDb(user: User) {
     this.db.users
-      .put(user)
+      .add(user)
       .then(async () => {
         const allItems: User[] = await this.db.users.toArray();
         console.log('saved in DB, DB is now', allItems);
