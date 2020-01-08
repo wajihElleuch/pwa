@@ -59,23 +59,25 @@ export class UserService {
   }
 
   private async sendItemsFromIndexedDb() {
-    // const allItems: User[] = await this.db.users.toArray();
-    this.httpClient.put(`https://app-paw.herokuapp.com/users/edit`, {
-      firstName: 'dalidali',
-      id: 2,
-      lastName: 'jallouli',
-      selected: false
-    }).pipe(
-      retryWhen(errors => errors.pipe(delay(1000), take(10)))
-    ).subscribe(value => console.log(value));
-    //
-    // allItems.forEach((item: User) => {
-    //   console.log(item);
-    //   this.httpClient.put(`https://app-paw.herokuapp.com/users/edit`, item).subscribe(value => console.log(value));
-    //   // this.db.users.delete(item).then(() => {
-    //   //   console.log(`item ${item} sent and deleted locally`);
-    //   // });
-    // });
+    const allItems: User[] = await this.db.users.toArray();
+    // this.httpClient.put(`https://app-paw.herokuapp.com/users/edit`, {
+    //   firstName: 'dalidali',
+    //   id: 2,
+    //   lastName: 'jallouli',
+    //   selected: false
+    // }).pipe(
+    //   retryWhen(errors => errors.pipe(delay(1000), take(10)))
+    // ).subscribe(value => console.log(value));
+
+    allItems.forEach((item: User) => {
+      console.log(item);
+      this.httpClient.put(`https://app-paw.herokuapp.com/users/edit`, item).pipe(
+        retryWhen(errors => errors.pipe(delay(1000), take(10)))
+      ).subscribe(value => console.log(value));
+      this.db.users.delete(item.id).then(() => {
+        console.log(`item ${item} sent and deleted locally`);
+      });
+    });
   }
 
 }

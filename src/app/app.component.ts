@@ -3,6 +3,7 @@ import {SwUpdate} from '@angular/service-worker';
 import {UserService} from './services/user.service';
 
 export interface User {
+  id: number;
   firstName: string;
   lastName: string;
   selected: boolean;
