@@ -17,7 +17,7 @@ export interface User {
 export class AppComponent implements OnInit {
   title = 'paw';
   update = false;
-  users: any;
+  users: any[];
 
   constructor(private updates: SwUpdate, private todoService: UserService) {
     this.updates.available.subscribe(value => {
@@ -35,9 +35,11 @@ export class AppComponent implements OnInit {
   updateSelected(user: any) {
     if (user.selected) {
       user.selected = false;
+      this.users.splice(this.users.indexOf(user), 1, user);
       this.todoService.updateUser(user).subscribe(value => console.log(value));
     } else {
       user.selected = true;
+      this.users.splice(this.users.indexOf(user), 1, user);
       this.todoService.updateUser(user).subscribe(value => console.log(value));
     }
   }
