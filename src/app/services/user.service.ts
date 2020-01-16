@@ -3,7 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {OnlineOfflineService} from './online-offline.service';
 import Dexie from 'dexie';
 import {User} from '../app.component';
-import {delay, retryWhen, take} from 'rxjs/operators';
+import {delay, map, retryWhen, take, tap} from 'rxjs/operators';
+import {from, of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -29,12 +30,40 @@ export class UserService {
   }
 
   public getUsers() {
-    return this.httpClient.get('https://app-paw.herokuapp.com/users');
+    if (!this.onlineOfflineService.isOnline) {
+      return from(this.db.list_user.toArray());
+    } else {
+
+      this.db.list_user.clear();
+      // this.db.delete();
+      // this.createDatabase();
+      return this.httpClient.get('https://app-paw.herokuapp.com/users').pipe(
+        map(value => value),
+        tap((x: any[]) => {
+          for (const a of x) {
+            this.db.list_user.add(a).then(async () => {
+              const allItems: User[] = await this.db.users.toArray();
+              console.log('saved in list user', allItems);
+
+            });
+          }
+
+        })
+      );
+    }
+
+  }
+
+  private getItem() {
+    const allItems: User[] = this.db.users.toArray();
+
+    return allItems;
   }
 
   public updateUser(user) {
     if (!this.onlineOfflineService.isOnline) {
       this.addToIndexedDb(user);
+      this.db.list_user.put(user).then();
     }
     return this.httpClient.put(`https://app-paw.herokuapp.com/users/edit`, user);
   }
@@ -43,12 +72,16 @@ export class UserService {
     this.db = new Dexie('MyTestDatabase');
     this.db.version(1).stores({
       users: 'id,firstName,lastName,Selected'
+
+    });
+    this.db.version(2).stores({
+      list_user: 'id,firstName,lastName,Selected'
     });
   }
 
   private addToIndexedDb(user: User) {
     this.db.users
-      .add(user)
+      .put(user)
       .then(async () => {
         const allItems: User[] = await this.db.users.toArray();
         console.log('saved in DB, DB is now', allItems);
