@@ -1,5 +1,4 @@
 <mat-list>
-  <h3 mat-subheader>Folders</h3>
   <mat-list-item style="height: 100px !important;" *ngFor="let vessel of vessels" class="mat-elevation-z2 mt-2" mat-ripple
                  [routerLink]="'/vessels/'+vessel.id">
     <img mat-list-icon [src]="vessel.icon" alt="" style="height: 85px !important; width: 90px !important;">
