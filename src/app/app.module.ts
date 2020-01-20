@@ -9,7 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { ListVesselsComponent } from './components/list-vessels/list-vessels.component';
 import { VesselsDetailsComponent } from './components/vessels-details/vessels-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatIconModule, MatListModule, MatRippleModule} from '@angular/material';
+import {MatButtonModule, MatIconModule, MatListModule, MatRippleModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import {MatIconModule, MatListModule, MatRippleModule} from '@angular/material';
     BrowserAnimationsModule,
     MatListModule,
     MatIconModule,
-    MatRippleModule
+    MatRippleModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
