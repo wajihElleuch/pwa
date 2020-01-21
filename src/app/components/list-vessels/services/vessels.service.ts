@@ -89,14 +89,13 @@ export class VesselsService {
       return this.httpClient.get(`https://app-paw.herokuapp.com/vessels/${id}`);
     }
   }
-
   updateVessel(vessel) {
     if (!this.onlineOfflineService.isOnline) {
       this.db.vesselToUpdate.put(vessel);
       this.db.vesselList.put(vessel);
       return from(this.db.vesselList.toArray());
     } else {
-      return this.httpClient.put(`http://app-paw.herokuapp.com/edit/vessel`, vessel);
+      return this.httpClient.put(`https://app-paw.herokuapp.com/edit/vessel`, vessel);
     }
   }
 
@@ -113,7 +112,7 @@ export class VesselsService {
 
     allItems.forEach((item: Vessel) => {
       console.log(item);
-      this.httpClient.put(`http://app-paw.herokuapp.com/edit/vessel`, item).pipe(
+      this.httpClient.put(`https://app-paw.herokuapp.com/edit/vessel`, item).pipe(
         retryWhen(errors => errors.pipe(delay(1000), take(10)))
       ).subscribe(value => console.log(value));
       this.db.vesselToUpdate.delete(item.id).then(() => {
