@@ -26,7 +26,7 @@ export class VesselsService {
         console.log('sending all stored items');
         this.sendItemsFromIndexedDb();
       } else {
-        console.log('went offline, storing in indexdb');
+        console.log('went offline, storing in indexdb server');
       }
     });
   }
