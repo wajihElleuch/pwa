@@ -22,13 +22,15 @@
   <mat-list>
     <ng-container *ngFor="let detail of sorted">
       <ng-container *ngIf="detail[1].checked">
-        <mat-list-item style="height: 100px !important;" class="mat-elevation-z2 mt-2" mat-ripple>
+        <mat-list-item style="height: 65px !important;" class="mat-elevation-z2 mt-1" >
 
           <!--            <img mat-list-icon [src]="vessel.icon" alt="" style="height: 85px !important; width: 90px !important;">-->
           <!--    <mat-icon mat-list-icon>folder</mat-icon>-->
           <h4 mat-line>{{detail[1].name}}</h4>
           <h4 mat-line>{{detail[1].date|date:'MMM d, y, h:mm:ss a'}}</h4>
-          <!--        <mat-icon>navigate_next</mat-icon>-->
+
+                  <mat-icon color="accent" (click)="openDeleteDialog(detail)">delete</mat-icon>
+                  <mat-icon color="primary">create</mat-icon>
 
         </mat-list-item>
       </ng-container>

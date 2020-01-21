@@ -22,13 +22,15 @@ import {ModalComponent} from './components/modal/modal.component';
 import {FlexModule} from '@angular/flex-layout';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {DeletConfirmationComponent} from './components/modal/confirmation/delet-confirmation/delet-confirmation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListVesselsComponent,
     VesselsDetailsComponent,
-    ModalComponent
+    ModalComponent,
+    DeletConfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ModalComponent]
+  entryComponents: [ModalComponent, DeletConfirmationComponent]
 })
 export class AppModule {
 }
