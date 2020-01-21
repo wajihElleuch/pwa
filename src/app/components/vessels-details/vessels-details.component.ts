@@ -31,7 +31,9 @@ export class VesselsDetailsComponent implements OnInit, OnDestroy {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ModalComponent, {
-      width: '250px',
+      panelClass: 'my-dialog',
+      width: '60vw',
+      height: '60vh',
       data: this.vessel
     });
 

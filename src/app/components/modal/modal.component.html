@@ -1,13 +1,51 @@
-<h1 mat-dialog-title>Hi {{data.name}}</h1>
-<div mat-dialog-content class="mat-typography">
-  <ng-container *ngFor="let detail of details">
-    <ng-container *ngIf="detail!=='id'">
-      <mat-checkbox [checked]="" (click)="updateData(data,detail)">{{data.details[detail].name}}</mat-checkbox>
-    </ng-container>
-  </ng-container>
+<!--<h1 mat-dialog-title>Hi {{data.name}}</h1>-->
+<!--<div mat-dialog-content class="mat-typography">-->
+<!--  <ng-container *ngFor="let detail of details">-->
+<!--    <ng-container *ngIf="detail!=='id'">-->
+<!--      <mat-checkbox class="d-block" [checked]=""-->
+<!--                    (click)="updateData(data,detail)">{{data.details[detail].name}}</mat-checkbox>-->
+<!--    </ng-container>-->
+<!--  </ng-container>-->
 
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.name" cdkFocusInitial>Ok</button>
+<!--</div>-->
+<!--<div mat-dialog-actions >-->
+<!--  <button mat-button (click)="onNoClick()">Close</button>-->
+<!--  <button mat-button [mat-dialog-close]="data.name" cdkFocusInitial style="float: right">Ok</button>-->
+<!--</div>-->
+<div class="dialog-content-wrapper">
+
+  <mat-toolbar matDialogTitle class="accent m-0" fxFlex="1 0 auto" fxLayout="row" style="position: fixed;width: 60vw;z-index: 999;">
+
+    <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+
+      <div fxFlex fxLayout="row" fxLayoutAlign="center center">
+        Select vessel state
+      </div>
+
+      <!-- CLOSE DIALOG BUTTON -->
+      <button mat-icon-button (click)="dialogRef.close()" aria-label="Close Dialog">
+        <mat-icon>close</mat-icon>
+      </button>
+      <!-- / CLOSE DIALOG BUTTON -->
+
+    </div>
+
+  </mat-toolbar>
+
+  <div mat-dialog-content class="py-24 px-0 m-0 " style="padding-top: 9vh;">
+    <div class="container mb-4 pb-3" >
+      <ng-container *ngFor="let detail of details">
+        <ng-container *ngIf="detail!=='id'">
+          <mat-checkbox class="d-block" [checked]=""
+                        (click)="updateData(data,detail)">{{data.details[detail].name}}</mat-checkbox>
+        </ng-container>
+      </ng-container>
+    </div>
+
+  </div>
+<!--  <mat-dialog-actions style="padding-right: 20px !important;"  fxLayout="row" fxLayoutAlign="end center"  class="py-24 px-0 m-0 ">-->
+<!--    <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>-->
+<!--    <button mat-raised-button color="primary"   cdkFocusInitial>save</button>-->
+<!--  </mat-dialog-actions>-->
+
 </div>

@@ -1,11 +1,12 @@
-import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {Vessel} from '../../models/vessel.model';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss']
+  styleUrls: ['./modal.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ModalComponent implements OnInit, AfterViewInit {
   details: any;

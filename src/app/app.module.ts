@@ -10,15 +10,17 @@ import {ListVesselsComponent} from './components/list-vessels/list-vessels.compo
 import {VesselsDetailsComponent} from './components/vessels-details/vessels-details.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MatButtonModule, MatCheckboxModule,
+  MatButtonModule, MatCheckboxModule, MatDatepickerModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatListModule,
-  MatRippleModule
+  MatListModule, MatProgressBarModule,
+  MatRippleModule, MatToolbarModule
 } from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
 import {ModalComponent} from './components/modal/modal.component';
+import {FlexModule} from '@angular/flex-layout';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,12 @@ import {ModalComponent} from './components/modal/modal.component';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDatepickerModule,
+    FlexModule,
+    ReactiveFormsModule,
+    MatProgressBarModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent],
