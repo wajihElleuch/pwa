@@ -29,8 +29,8 @@
           <h4 mat-line>{{detail[1].name}}</h4>
           <h4 mat-line>{{detail[1].date|date:'MMM d, y, h:mm:ss a'}}</h4>
 
-                  <mat-icon color="accent" (click)="openDeleteDialog(detail)">delete</mat-icon>
-                  <mat-icon color="primary">create</mat-icon>
+                  <mat-icon color="accent" class="mr-2" (click)="openDeleteDialog(detail)">delete</mat-icon>
+                  <mat-icon color="primary" (click)="openEditDialog(detail)">create</mat-icon>
 
         </mat-list-item>
       </ng-container>

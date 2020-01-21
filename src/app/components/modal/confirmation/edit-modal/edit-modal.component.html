@@ -1,0 +1,12 @@
+<div mat-dialog-content>
+
+  <mat-form-field>
+    <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" >
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions style="float: right">
+  <button mat-raised-button color="accent" (click)="onNoClick()">No</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Yes</button>
+</div>

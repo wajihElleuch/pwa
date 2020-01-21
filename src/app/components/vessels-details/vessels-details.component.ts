@@ -7,6 +7,7 @@ import {ModalComponent} from '../modal/modal.component';
 import {VesselsService} from '../list-vessels/services/vessels.service';
 import {ActivatedRoute} from '@angular/router';
 import {DeletConfirmationComponent} from '../modal/confirmation/delet-confirmation/delet-confirmation.component';
+import {EditModalComponent} from '../modal/confirmation/edit-modal/edit-modal.component';
 
 @Component({
   selector: 'app-vessels-details',
@@ -83,5 +84,22 @@ export class VesselsDetailsComponent implements OnInit, OnDestroy {
       }
     });
 
+  }
+
+  openEditDialog(detail: any) {
+    const dialogRef = this.dialog.open(EditModalComponent, {
+      width: '350px',
+      data: 'Do you confirm the deletion of this data?'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // console.log(this.vessel.details[detail[0]]);
+        // this.vessel.details[detail[0]].checked = false;
+        // console.log(this.vessel.details[detail[0]].checked);
+        // this.vesselsService.updateVessel(this.vessel).subscribe(value => console.log(value));
+        console.log('Yes clicked');
+        // DO SOMETHING
+      }
+    });
   }
 }

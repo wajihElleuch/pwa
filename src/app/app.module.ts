@@ -10,7 +10,7 @@ import {ListVesselsComponent} from './components/list-vessels/list-vessels.compo
 import {VesselsDetailsComponent} from './components/vessels-details/vessels-details.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MatButtonModule, MatCheckboxModule, MatDatepickerModule,
+  MatButtonModule, MatCheckboxModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
@@ -23,6 +23,10 @@ import {FlexModule} from '@angular/flex-layout';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {DeletConfirmationComponent} from './components/modal/confirmation/delet-confirmation/delet-confirmation.component';
+import {EditModalComponent} from './components/modal/confirmation/edit-modal/edit-modal.component';
+import {NgxMatDatetimePickerModule, NgxMatTimepickerModule} from 'ngx-mat-datetime-picker';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +34,8 @@ import {DeletConfirmationComponent} from './components/modal/confirmation/delet-
     ListVesselsComponent,
     VesselsDetailsComponent,
     ModalComponent,
-    DeletConfirmationComponent
+    DeletConfirmationComponent,
+    EditModalComponent
   ],
   imports: [
     BrowserModule,
@@ -51,11 +56,14 @@ import {DeletConfirmationComponent} from './components/modal/confirmation/delet-
     ReactiveFormsModule,
     MatProgressBarModule,
     MatToolbarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ModalComponent, DeletConfirmationComponent]
+  entryComponents: [ModalComponent, DeletConfirmationComponent, EditModalComponent]
 })
 export class AppModule {
 }
