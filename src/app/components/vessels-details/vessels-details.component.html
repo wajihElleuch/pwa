@@ -1,6 +1,25 @@
-
-<button mat-button color="primary" class="mt-2 ml-2" routerLink="/vessels"><mat-icon>arrow_back_ios</mat-icon> Back</button>
+<button mat-button color="primary" class="mt-2 ml-2" routerLink="/vessels">
+  <mat-icon>arrow_back_ios</mat-icon>
+  Back
+</button>
 <div class="container">
-
+  <div class="d-flex flex-row justify-content-end">
+    <button mat-fab color="primary" (click)="openDialog()">
+      <span style="font-size: 25px">+</span>
+    </button>
+  </div>
+  <!--  <ol>-->
+  <!--    <li>-->
+  <!--      <mat-form-field>-->
+  <!--        <input matInput  placeholder="What's your name?">-->
+  <!--      </mat-form-field>-->
+  <!--    </li>-->
+  <!--    <li>-->
+  <!--      <button mat-raised-button (click)="openDialog()">Pick one</button>-->
+  <!--    </li>-->
+  <!--&lt;!&ndash;    <li *ngIf="animal">&ndash;&gt;-->
+  <!--&lt;!&ndash;      You chose: <i>{{animal}}</i>&ndash;&gt;-->
+  <!--&lt;!&ndash;    </li>&ndash;&gt;-->
+  <!--  </ol>-->
 
 </div>
