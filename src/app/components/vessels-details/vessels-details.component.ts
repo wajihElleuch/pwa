@@ -15,6 +15,8 @@ import {ActivatedRoute} from '@angular/router';
 export class VesselsDetailsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   vessel: Vessel;
+  details: any;
+  sorted: any[];
 
   constructor(private activatedRoute: ActivatedRoute, private vesselDetailStateService: VesselDetailStateService, public dialog: MatDialog, private vesselsService: VesselsService) {
   }
@@ -23,7 +25,16 @@ export class VesselsDetailsComponent implements OnInit, OnDestroy {
     this.activatedRoute.paramMap.subscribe(x => {
       this.vesselsService.getVesselById(x.get('id')).subscribe((value: Vessel) => {
         this.vessel = value;
-        console.log(value);
+        this.details = Object.keys(this.vessel.details);
+        const obj = Object.entries(this.vessel.details);
+        this.sorted = obj.sort((a, b) => {
+          console.log(a[1].date);
+          return a[1].date - b[1].date;
+        });
+        console.log(this.sorted);
+        console.log(obj);
+
+        // console.log(value);
       });
     });
   }
@@ -39,6 +50,10 @@ export class VesselsDetailsComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
+      this.sorted = Object.entries(this.vessel.details).sort((a, b) => {
+        // console.log(a[1].date);
+        return a[1].date - b[1].date;
+      });
       //this.animal = result;
     });
   }

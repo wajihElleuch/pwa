@@ -1,25 +1,65 @@
-<button mat-button color="primary" class="mt-2 ml-2" routerLink="/vessels">
-  <mat-icon>arrow_back_ios</mat-icon>
-  Back
-</button>
-<div class="container">
-  <div class="d-flex flex-row justify-content-end">
-    <button mat-fab color="primary" (click)="openDialog()">
-      <span style="font-size: 25px">+</span>
-    </button>
+<div style="top: 0;
+    position: fixed;
+    width: 100%;
+    background: #eee;
+    z-index: 999;">
+  <button mat-button color="primary" class="mt-2 ml-2" routerLink="/vessels">
+    <mat-icon>arrow_back_ios</mat-icon>
+    Back
+  </button>
+  <div class="container">
+    <div class="d-flex flex-row justify-content-end" style="position: relative;top: 15px">
+      <button mat-fab color="primary" (click)="openDialog()">
+        <span style="font-size: 25px">+</span>
+      </button>
+    </div>
   </div>
-  <!--  <ol>-->
-  <!--    <li>-->
-  <!--      <mat-form-field>-->
-  <!--        <input matInput  placeholder="What's your name?">-->
-  <!--      </mat-form-field>-->
-  <!--    </li>-->
-  <!--    <li>-->
-  <!--      <button mat-raised-button (click)="openDialog()">Pick one</button>-->
-  <!--    </li>-->
-  <!--&lt;!&ndash;    <li *ngIf="animal">&ndash;&gt;-->
-  <!--&lt;!&ndash;      You chose: <i>{{animal}}</i>&ndash;&gt;-->
-  <!--&lt;!&ndash;    </li>&ndash;&gt;-->
-  <!--  </ol>-->
-
 </div>
+
+
+<div class="container " style="margin-top: 15vh; padding-bottom: 20px">
+<!--  <h2 class="text-center ">Vessels list </h2>-->
+  <mat-list>
+    <ng-container *ngFor="let detail of sorted">
+      <ng-container *ngIf="detail[1].checked">
+        <mat-list-item style="height: 100px !important;" class="mat-elevation-z2 mt-2" mat-ripple>
+
+          <!--            <img mat-list-icon [src]="vessel.icon" alt="" style="height: 85px !important; width: 90px !important;">-->
+          <!--    <mat-icon mat-list-icon>folder</mat-icon>-->
+          <h4 mat-line>{{detail[1].name}}</h4>
+          <h4 mat-line>{{detail[1].date|date:'MMM d, y, h:mm:ss a'}}</h4>
+          <!--        <mat-icon>navigate_next</mat-icon>-->
+
+        </mat-list-item>
+      </ng-container>
+    </ng-container>
+    <!--      <ng-container *ngFor="let detail of details">-->
+    <!--        <ng-container *ngIf="vessel.details[detail].checked">-->
+    <!--          <mat-list-item style="height: 100px !important;" class="mat-elevation-z2 mt-2" mat-ripple>-->
+
+    <!--&lt;!&ndash;            <img mat-list-icon [src]="vessel.icon" alt="" style="height: 85px !important; width: 90px !important;">&ndash;&gt;-->
+    <!--            &lt;!&ndash;    <mat-icon mat-list-icon>folder</mat-icon>&ndash;&gt;-->
+    <!--            <h4 mat-line>{{vessel.details[detail].name}}</h4>-->
+    <!--            <h4 mat-line>{{vessel.details[detail].date|date:'MMM d, y, h:mm:ss a'}}</h4>-->
+    <!--            &lt;!&ndash;        <mat-icon>navigate_next</mat-icon>&ndash;&gt;-->
+
+    <!--          </mat-list-item>-->
+    <!--        </ng-container>-->
+    <!--      </ng-container>-->
+  </mat-list>
+</div>
+
+<!--  <ol>-->
+<!--    <li>-->
+<!--      <mat-form-field>-->
+<!--        <input matInput  placeholder="What's your name?">-->
+<!--      </mat-form-field>-->
+<!--    </li>-->
+<!--    <li>-->
+<!--      <button mat-raised-button (click)="openDialog()">Pick one</button>-->
+<!--    </li>-->
+<!--&lt;!&ndash;    <li *ngIf="animal">&ndash;&gt;-->
+<!--&lt;!&ndash;      You chose: <i>{{animal}}</i>&ndash;&gt;-->
+<!--&lt;!&ndash;    </li>&ndash;&gt;-->
+<!--  </ol>-->
+

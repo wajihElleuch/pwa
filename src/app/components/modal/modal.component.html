@@ -36,8 +36,8 @@
     <div class="container mb-4 pb-3" >
       <ng-container *ngFor="let detail of details">
         <ng-container *ngIf="detail!=='id'">
-          <mat-checkbox class="d-block" [checked]=""
-                        (click)="updateData(data,detail)">{{data.details[detail].name}}</mat-checkbox>
+          <mat-checkbox class="d-block" [checked]="data.details[detail].checked"
+                        (change)="updateData(data,detail)">{{data.details[detail].name}}</mat-checkbox>
         </ng-container>
       </ng-container>
     </div>

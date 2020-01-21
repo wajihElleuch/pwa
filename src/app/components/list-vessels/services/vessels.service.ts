@@ -90,6 +90,16 @@ export class VesselsService {
     }
   }
 
+  updateVessel(vessel) {
+    if (!this.onlineOfflineService.isOnline) {
+
+      this.db.vesselList.put(vessel);
+      return from(this.db.vesselList.toArray());
+    } else {
+      return this.httpClient.put(`http://app-paw.herokuapp.com/edit/vessel`, {vessel});
+    }
+  }
+
   // private async sendItemsFromIndexedDb() {
   //   const allItems: Vessel[] = await this.db.users.toArray();
   //   // this.httpClient.put(`https://app-paw.herokuapp.com/users/edit`, {
