@@ -7,6 +7,7 @@ import {User} from '../../../app.component';
 import {delay, filter, map, retryWhen, take, tap} from 'rxjs/operators';
 import {Vessel} from '../../../models/vessel.model';
 import {from, of} from 'rxjs';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ import {from, of} from 'rxjs';
 export class VesselsService {
   private db: any;
 
-  constructor(private httpClient: HttpClient, private readonly onlineOfflineService: OnlineOfflineService) {
+  constructor(private httpClient: HttpClient, private readonly onlineOfflineService: OnlineOfflineService, private snackBar: MatSnackBar) {
     this.registerToEvents(onlineOfflineService);
     this.createDatabase();
   }
@@ -22,10 +23,16 @@ export class VesselsService {
   private registerToEvents(onlineOfflineService: OnlineOfflineService) {
     onlineOfflineService.connectionChanged.subscribe(online => {
       if (online) {
+        this.snackBar.open('went online', 'sending all stored items', {
+          duration: 2000,
+        });
         console.log('went online');
         console.log('sending all stored items');
         this.sendItemsFromIndexedDb();
       } else {
+        this.snackBar.open('went offline', 'storing in indexdb server', {
+          duration: 2000,
+        });
         console.log('went offline, storing in indexdb server');
       }
     });
@@ -89,6 +96,7 @@ export class VesselsService {
       return this.httpClient.get(`https://app-paw.herokuapp.com/vessels/${id}`);
     }
   }
+
   updateVessel(vessel) {
     if (!this.onlineOfflineService.isOnline) {
       this.db.vesselToUpdate.put(vessel);

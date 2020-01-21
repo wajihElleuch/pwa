@@ -21,6 +21,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {ModalComponent} from './components/modal/modal.component';
 import {FlexModule} from '@angular/flex-layout';
 import {ReactiveFormsModule} from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     FlexModule,
     ReactiveFormsModule,
     MatProgressBarModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],
