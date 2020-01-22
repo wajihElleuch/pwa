@@ -80,6 +80,7 @@ export class VesselsDetailsComponent implements OnInit, OnDestroy {
         console.log(this.vessel.details[detail[0]].checked);
         this.vesselsService.updateVessel(this.vessel).subscribe(value => console.log(value));
         console.log('Yes clicked');
+
         // DO SOMETHING
       }
     });
@@ -89,15 +90,20 @@ export class VesselsDetailsComponent implements OnInit, OnDestroy {
   openEditDialog(detail: any) {
     const dialogRef = this.dialog.open(EditModalComponent, {
       width: '350px',
-      data: 'Do you confirm the deletion of this data?'
+      data: {date: this.vessel.details[detail[0]].date, msg: this.vessel.details[detail[0]].name}
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        console.log(result)
         // console.log(this.vessel.details[detail[0]]);
-        // this.vessel.details[detail[0]].checked = false;
+        this.vessel.details[detail[0]].date = result.getTime();
         // console.log(this.vessel.details[detail[0]].checked);
-        // this.vesselsService.updateVessel(this.vessel).subscribe(value => console.log(value));
+        this.vesselsService.updateVessel(this.vessel).subscribe(value => console.log(value));
         console.log('Yes clicked');
+        this.sorted = Object.entries(this.vessel.details).sort((a, b) => {
+          // console.log(a[1].date);
+          return a[1].date - b[1].date;
+        });
         // DO SOMETHING
       }
     });
